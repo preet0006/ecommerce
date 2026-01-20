@@ -18,7 +18,7 @@ const page = async () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 mt-20">
-      {/* Header */}
+      
       <div className="mb-10 text-center">
         <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
           Your Favourites
@@ -28,7 +28,7 @@ const page = async () => {
         </p>
       </div>
 
-      {/* Empty State */}
+      
       {cartItems.length === 0 ? (
         <div className="text-center mt-24">
           <p className="text-gray-500 text-sm">
@@ -36,7 +36,7 @@ const page = async () => {
           </p>
         </div>
       ) : (
-        /* FLEX CENTERED CARDS */
+      
         <div className="flex justify-center">
           <div className="flex flex-wrap justify-center gap-6 max-w-6xl">
             {cartItems.map((item) => (
@@ -50,7 +50,7 @@ const page = async () => {
                            hover:-translate-y-1
                            transition-all duration-300"
               >
-                {/* Image */}
+              
                 <div className="relative h-[38vh] md:h-[42vh] bg-gray-100 overflow-hidden">
                   <img
                     src={item.image}
@@ -61,7 +61,7 @@ const page = async () => {
                   />
                 </div>
 
-                {/* Content */}
+                
                 <div className="p-4 text-center">
                   <p className="text-sm md:text-base font-medium text-gray-800 line-clamp-2">
                     {item.name}

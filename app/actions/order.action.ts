@@ -49,7 +49,6 @@ export async function addToCartAction({
       return { success: true, type: 'UPDATED' }
     }
 
-    // Otherwise, insert a new row
     await tx.insert(orders).values({
       productId,
       quantity,
@@ -105,7 +104,7 @@ export async function decreaseQtyAction(
 
   const currentQty = item[0].quantity ?? 0
 
-  // If quantity is 1 → remove item
+  
   if (currentQty === 1) {
     await db
       .delete(orders)
@@ -113,7 +112,7 @@ export async function decreaseQtyAction(
     return
   }
 
-  // Otherwise decrease by 1
+ 
   await db
     .update(orders)
     .set({
