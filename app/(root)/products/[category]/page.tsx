@@ -56,7 +56,7 @@ const product = await db
     <Filter/>
   </button>
 
-  {/* Price Dropdown */}
+
   <select
     className="px-3 py-1.5 rounded-lg shadow-sm
                bg-white text-xs font-medium

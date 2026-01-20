@@ -7,6 +7,7 @@ import { Submenu } from './Submenu'
 import ShoppingBag from './Shop'
 import ShowItem from './ShowItem'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
   const submenuData: Record<string, { categories: string[], highlights: string[], image: string }> = {
   Men: {
@@ -37,6 +38,9 @@ import Link from 'next/link'
 }
 
 const Navbar = () => {
+
+  const router = useRouter()
+  const [search, setSearch] = useState("")
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const submenuRef = useRef<HTMLDivElement | null>(null)
   const tl = useRef<gsap.core.Timeline | null>(null)
@@ -87,6 +91,14 @@ const Navbar = () => {
     })
   }
 
+  const handleSearch = () => {
+  if (!search.trim()) return
+
+  router.push(`/products/${(search)}`)
+  setSearch("")
+}
+
+
   return (
     <div
       className='absolute px-6 top-3 z-50 w-full'
@@ -113,7 +125,13 @@ const Navbar = () => {
 
           <div className='flex sm:space-x-3'>
             <div className='relative flex'>
-              <input className='bg-[#eff0f0d2] rounded-xs outline-none' />
+              <input  value={search}
+              onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={(e) => {
+                 if (e.key === "Enter") {
+                    handleSearch()
+                  }
+                }} className='bg-[#eff0f0d2] rounded-xs outline-none' />
               <div className='absolute space-x-3 flex bottom-1 right-1'>
                 
                 <Search size={22} />
@@ -123,14 +141,13 @@ const Navbar = () => {
             <div>
               
             </div>
+
             <div className=' hidden sm:flex space-x-3'>
                <User size={24} />
               <Link href={"/bookmark"}>
               <Bookmark size={24} />
               </Link>
-              
               <span className='' onClick={()=>setShowBag(!showBag)}><Briefcase size={24} /></span>
-
             </div>
            
 
@@ -138,10 +155,8 @@ const Navbar = () => {
           </div>
         </div>
             
-        
-      
         <div className="w-full -mt-1 bg-[#eff0f0d2] overflow-hidden">
-
+          
        <div ref={submenuRef}>
       {activeCategory && (
       <Submenu

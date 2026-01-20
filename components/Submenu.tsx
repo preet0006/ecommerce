@@ -1,3 +1,7 @@
+'use client'
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 
 interface SubmenuProps {
@@ -8,13 +12,18 @@ interface SubmenuProps {
 }
 
 
-export const Submenu = ({ title, categories, highlights, image }: SubmenuProps ) => (
+export const Submenu = ({ title, categories, highlights, image }: SubmenuProps ) => {
+  const router = useRouter()
 
-  
-  <div className='flex justify-between w-full text-2xl font-semibold px-4 py-6'>
+
+
+  return (
+
+      <div className='flex justify-between w-full text-2xl font-semibold px-4 py-6'>
     <div className='flex flex-col items-center space-y-2'>
       <span className='bg-white text-[14px] rounded-4xl px-2'>Categories</span>
-        {categories.map((item, idx) => <h4 key={idx}>{item}</h4>)}
+  
+        {categories.map((item, idx) => <Link href= {`/products/${item}`} key={idx}>{item}</Link>)}
     </div>
 
     <div className='flex flex-col items-center space-y-2'>
@@ -27,4 +36,7 @@ export const Submenu = ({ title, categories, highlights, image }: SubmenuProps )
      <img className='w-full h-full object-cover' src={image} alt={title} />
     </div>
   </div>
-)
+  )
+  
+
+}
