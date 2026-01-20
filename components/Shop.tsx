@@ -1,9 +1,10 @@
 "use client";
 import { decreaseQtyAction, increaseQtyAction, removeFromCartAction } from "@/app/actions/order.action";
 import { useCart } from "@/app/context/CartContext";
+import Link from "next/link";
 import React from "react";
 
-const ShoppingBag = () => {
+const ShoppingBag = ({setShowBag}:any) => {
   const { state, dispatch } = useCart();
   console.log(state)
 
@@ -38,8 +39,9 @@ const ShoppingBag = () => {
     
   };
 
-  const removeItem = async(id:string) => {
-    dispatch({ type: "REMOVE", payload: id });
+  const removeItem = async(id:string,size:string) => {
+     dispatch({ type: "REMOVE",payload: { id, size },
+  })
      await removeFromCartAction(id)
   };
 
@@ -108,7 +110,7 @@ const ShoppingBag = () => {
                   R$ {item.price * item.quantity}
                 </span>
                 <button
-                  onClick={() => removeItem(item.id)}
+                  onClick={() => removeItem(item.id,item.size)}
                   className="text-xs text-gray-400 hover:text-black"
                 >
                   Remove
@@ -125,11 +127,12 @@ const ShoppingBag = () => {
           <span className="font-semibold">R$ {totalPrice}</span>
         </div>
 
-        <button className="w-full bg-[#3A3A3A] text-white py-3 rounded-xl font-medium hover:bg-gray-900 transition">
-          Complete Purchase
-        </button>
+       <Link href="/order"className="block w-full bg-[#3A3A3A] text-white py-3 rounded-xl font-medium text-center hover:bg-gray-700 transition">
+            Complete Purchase
+        </Link>
 
-        <button className="w-full text-sm text-gray-500 mt-3">
+
+        <button onClick={()=>setShowBag(false)} className="w-full text-sm text-gray-500 mt-3">
           Continue shopping
         </button>
       </div>

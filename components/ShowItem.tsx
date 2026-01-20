@@ -15,7 +15,7 @@ const ShowItem = ({data =[]}) => {
           className="flex-shrink-0 w-[220px] md:w-[400px]"
         >
           
-          <div className="rounded-3xl  h-[38vh] md:h-[70vh] bg-[#EBEBEA] overflow-hidden">
+          <div className="rounded-xs sm:rounded-3xl  h-[38vh] md:h-[70vh] bg-[#EBEBEA] overflow-hidden">
             <img
               className="w-full h-full object-cover "
               src={item.images}

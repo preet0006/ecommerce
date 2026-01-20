@@ -171,7 +171,7 @@ const Navbar = () => {
 
              {
               showBag &&(
-                <ShoppingBag/>
+                <ShoppingBag setShowBag={setShowBag}/>
               )
              }
         

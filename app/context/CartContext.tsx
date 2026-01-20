@@ -17,7 +17,7 @@ type CartState = {
 
 type CartAction =
   | { type: 'ADD'; payload: Omit<CartItem, 'quantity'> }
-  | { type: 'REMOVE'; payload: string }
+  | { type: 'REMOVE'; payload: { id: string; size: string } }
   | { type: 'CLEAR' }
   | { type: 'UPDATE_QTY'; payload: { id: string; quantity: number } }
 
@@ -56,8 +56,14 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
       }
 
     case 'REMOVE':
-      return {
-        items: state.items.filter(item => item.id !== action.payload),
+       return {
+        items: state.items.filter(
+          item =>
+            !(
+              item.id === action.payload.id &&
+              item.size === action.payload.size
+            )
+        ),
       }
 
     case 'CLEAR':

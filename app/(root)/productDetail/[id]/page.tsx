@@ -3,27 +3,47 @@ import HomeVariety from '@/components/HomeVariety'
 import ImageCarousel from '@/components/ImageCarousel'
 import Info from '@/components/Info'
 import OgCarousel from '@/components/OgCarousel'
+import Products from '@/components/Products'
 import Question from '@/components/question'
 import ShowItem from '@/components/ShowItem'
 import { db } from '@/db'
 import { products } from '@/db/schema'
-import { eq } from 'drizzle-orm'
+import { eq, ne } from 'drizzle-orm'
 
 
 const page = async({params}:{params:{id:string}}) => {
 
     const { id } = await params;
-  console.log("ID:", id);
+  
 
    const [product] = await db
     .select()
     .from(products)
     .where(eq(products.id, id)); 
 
- console.log(product)
-  if (!product) {
-    return <div>Product not found</div>;
+
+   if (!product) {
+    return <div>Product not found</div>
   }
+
+  const productcategory = product.category
+  console.log(productcategory)
+
+  
+ 
+
+   const relatedProducts = await db
+    .select()
+    .from(products)
+    .where(eq(products.category, product.category))
+    .where(ne(products.id, product.id))
+    .limit(4)
+
+    
+
+
+ console.log(product)
+
 
   return (
     <div className=" relative flex flex-col min-w-screen min-h-screen">
@@ -47,7 +67,7 @@ const page = async({params}:{params:{id:string}}) => {
 
             </div>
               
-               <div className=' w-[400px] rounded-2xl  h-[430px]'>
+               <div className=' w-[300px] h-[300px] sm:w-[400px] rounded-2xl  sm:h-[430px]'>
                   
                        <OgCarousel/>
 
@@ -74,7 +94,9 @@ const page = async({params}:{params:{id:string}}) => {
 
               </div>
 
-              <ShowItem/>
+             
+
+              <Products data={relatedProducts}/>
 
 
             </div>

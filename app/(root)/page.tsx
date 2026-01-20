@@ -82,7 +82,7 @@ const page = async() => {
               </div>
            
            <div className='flex pt-4  max-w-3xl'>
-              <p className='font-bold hidden sm:block text-center sm:text-start text-[16px] sm:text-[18px]'> Shop smarter with a platform built for speed, simplicity, and trust. Find your favorites, add to cart, and enjoy hassle-free checkout in just a few clicks.</p>
+              <p className='font-medium hidden sm:block text-center sm:text-start text-[16px] sm:text-[18px]'> Shop smarter with a platform built for speed, simplicity, and trust. Find your favorites, add to cart, and enjoy hassle-free checkout in just a few clicks.</p>
 
            </div>
 
