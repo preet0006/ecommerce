@@ -8,23 +8,28 @@ const CartServerProvider = async ({
 }: {
   children: React.ReactNode
 }) => {
+  const cartItemsRaw = await db
+    .select({
+      id: products.id,
+      name: products.name,
+      image: products.images,
+      quantity: orders.quantity,
+      price: products.price,
+      size: orders.size,
+    })
+    .from(orders)
+    .innerJoin(products, eq(orders.productId, products.id))
+    .where(eq(orders.status, 'CART'))
 
-
- const cartItems = await db
-  .select({
-    id: products.id,           
-    name: products.name,
-    image: products.images,
-    quantity: orders.quantity,
-    price: products.price,
-    size: orders.size,    
-  })
-  .from(orders)
-  .innerJoin(products, eq(orders.productId, products.id))
-  .where(eq(orders.status, 'CART'))
-
- 
-  console.log('CART ITEMS:', cartItems)
+  
+  const cartItems = cartItemsRaw.map(item => ({
+    id: item.id,
+    name: item.name,
+    price: Number(item.price),          
+    quantity: item.quantity ?? 1,        
+    size: item.size ?? 'DEFAULT',        
+    image: item.image?.[0],              
+  }))
 
   return (
     <CartProvider initialItems={cartItems}>

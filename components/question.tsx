@@ -21,7 +21,8 @@ const faqs = [
 ];
 
 export default function Question() {
-  const [openIndex, setOpenIndex] = useState(null);
+  
+const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <div className="w-xs h-96 p-4 space-y-3 text-[13px] bg-white rounded-xl shadow-md">

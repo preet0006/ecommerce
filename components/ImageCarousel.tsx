@@ -1,7 +1,7 @@
 import React from 'react'
 import OgCarousel from './OgCarousel'
 
-const ImageCarousel = ({image}) => {
+const ImageCarousel = ({image}:any) => {
 
   return (
     // <div className='w-full h-xl flex items-center justify-center '>

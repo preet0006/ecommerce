@@ -1,7 +1,22 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Products = ({ data }:any) => {
+
+
+
+type Product = {
+  id: string
+  name: string
+  thumbnail: string
+  
+}
+
+type ProductsProps = {
+  data: Product[]
+}
+
+
+const Products = ({ data }:ProductsProps) => {
   return (
     <div className="flex flex-wrap mt-4 justify-center gap-1 sm:gap-0">
 
@@ -18,7 +33,7 @@ const Products = ({ data }:any) => {
                           flex items-center justify-center">
             <img
               src={item.thumbnail}
-              alt={item.title}
+              alt={item.name}
               className="w-full h-full rounded-xl object-cover"
             />
           </div>
