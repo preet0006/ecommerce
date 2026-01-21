@@ -52,13 +52,14 @@ const page = async () => {
               >
               
                 <div className="relative h-[38vh] md:h-[42vh] bg-gray-100 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover
-                               group-hover:scale-105
-                               transition-transform duration-300"
-                  />
+               <img
+           src={item.image?.[0] ?? "/placeholder.png"}
+           alt={item.name}
+         className="w-full h-full object-cover
+             group-hover:scale-105
+             transition-transform duration-300"
+/>
+
                 </div>
 
                 
