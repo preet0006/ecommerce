@@ -7,7 +7,7 @@ import { types } from '@/lib';
 import { eq, sql } from 'drizzle-orm';
 
 
-const Page =  async({params}) => {
+const Page =  async({params}:any) => {
 
  const { category } = await params
 

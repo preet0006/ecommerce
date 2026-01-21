@@ -2,7 +2,7 @@ import React from 'react'
 import { types } from '@/lib'
 import ShowItem from './ShowItem'
 
-const HomeVariety = ({data}) => {
+const HomeVariety = ({data}:any) => {
 
 
     

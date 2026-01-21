@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const Products = ({ data }) => {
+const Products = ({ data }:any) => {
   return (
     <div className="flex flex-wrap mt-4 justify-center gap-1 sm:gap-0">
 

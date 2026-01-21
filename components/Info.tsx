@@ -8,7 +8,7 @@ import { ShoppingBag } from "@deemlol/next-icons";
 import { CheckCircle } from "@deemlol/next-icons";
 import gsap from "gsap";
 
-const Info = ({product}) => {
+const Info = ({product}:any) => {
 
   const [bookmarked, setBookmarked] = useState(false);
   const bookmarkRef = useRef<HTMLSpanElement | null>(null);
