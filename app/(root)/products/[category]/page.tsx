@@ -43,7 +43,6 @@ const product = await db
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates similique numquam ut dicta consequatur exercitationem id expedita asperiores pariatur officia natus doloremque voluptate perspiciatis dolores praesentium, minus quo recusandae cumque.
       </p>
 
-
       <div className="w-full flex items-center justify-evenly gap-2 px-3 py-2 
                 bg-[#F5F5F5] rounded-xl
                 md:hidden">
@@ -71,13 +70,9 @@ const product = await db
 
 </div>
 
-
-
             
        <Products data={product}/>
        
-
-
     </div>
 
 

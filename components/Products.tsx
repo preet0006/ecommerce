@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import LoadingShimmer from '@/app/LoadingShimmer'
 
 
 
@@ -17,8 +18,18 @@ type ProductsProps = {
 
 
 const Products = ({ data }:ProductsProps) => {
+
+
+  const isLoading = !data || data.length === 0
+
+    if (isLoading) {
+    return <LoadingShimmer />
+  }
+
+
   return (
     <div className="flex flex-wrap mt-4 justify-center gap-1 sm:gap-0">
+
 
       {data.map((item) => (
         <Link
