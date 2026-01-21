@@ -8,7 +8,7 @@ import Question from '@/components/question'
 import ShowItem from '@/components/ShowItem'
 import { db } from '@/db'
 import { products } from '@/db/schema'
-import { eq, ne } from 'drizzle-orm'
+import { and, eq, ne } from 'drizzle-orm'
 
 
 const page = async({params}:{params:{id:string}}) => {
@@ -32,12 +32,16 @@ const page = async({params}:{params:{id:string}}) => {
   
  
 
-   const relatedProducts = await db
-    .select()
-    .from(products)
-    .where(eq(products.category, product.category))
-    .where(ne(products.id, product.id))
-    .limit(4)
+const relatedProducts = await db
+  .select()
+  .from(products)
+  .where(
+    and(
+      eq(products.category, product.category),
+      ne(products.id, product.id)
+    )
+  )
+  .limit(4)
 
     
 
