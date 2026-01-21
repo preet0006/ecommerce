@@ -23,7 +23,7 @@ const page = () => {
   const total = subtotal + tax + shipping
 
 
-    const handleRemove = (item) => {
+    const handleRemove = (item:any) => {
     dispatch({
       type: 'REMOVE',
       payload: {
