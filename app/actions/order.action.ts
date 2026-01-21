@@ -7,8 +7,8 @@ import { and, eq, sql } from 'drizzle-orm'
 type AddToCartArgs = {
   productId: string
   quantity: number
-  size?: string
-  price: number
+  size: string
+  price: number 
 }
 
 export async function addToCartAction({
@@ -41,7 +41,7 @@ export async function addToCartAction({
         .update(orders)
         .set({
           quantity: currentQty + quantity,
-          totalAmount: currentTotal + price * quantity,
+           totalAmount: String(currentTotal + price * quantity),
           updatedAt: new Date(),
         })
         .where(eq(orders.id, existing[0].id))
@@ -49,15 +49,16 @@ export async function addToCartAction({
       return { success: true, type: 'UPDATED' }
     }
 
-    await tx.insert(orders).values({
-      productId,
-      quantity,
-      size,
-      status: 'CART',
-      totalAmount: price * quantity,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    })
+  await tx.insert(orders).values({
+  productId,
+  quantity, 
+  size: size ?? null, 
+  status: 'CART',
+  totalAmount: String(price * quantity), 
+  createdAt: new Date(),
+  updatedAt: new Date(),
+})
+
 
     return { success: true, type: 'CREATED' }
   })
@@ -113,14 +114,17 @@ export async function decreaseQtyAction(
   }
 
  
-  await db
-    .update(orders)
-    .set({
-      quantity: currentQty - 1,
-      totalAmount: Number(item[0].totalAmount) - price,
-      updatedAt: new Date(),
-    })
-    .where(eq(orders.id, item[0].id))
+ await db
+  .update(orders)
+  .set({
+    quantity: currentQty - 1,
+    totalAmount: String(
+      Number(item[0].totalAmount ?? 0) - price
+    ),
+    updatedAt: new Date(),
+  })
+  .where(eq(orders.id, item[0].id))
+
 }
 
 
