@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic'
+
+
 import Comments from '@/components/Comments'
 import HomeVariety from '@/components/HomeVariety'
 import ImageCarousel from '@/components/ImageCarousel'

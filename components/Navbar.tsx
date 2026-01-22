@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import React, { useState, useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { Search, Bookmark, User, Briefcase } from "@deemlol/next-icons"

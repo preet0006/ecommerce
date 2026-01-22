@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = 'force-dynamic'
+
 import { decreaseQtyAction, increaseQtyAction, removeFromCartAction } from "@/app/actions/order.action";
 import { useCart } from "@/app/context/CartContext";
 import Link from "next/link";
