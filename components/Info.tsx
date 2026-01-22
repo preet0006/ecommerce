@@ -93,7 +93,7 @@ const Info = ({product}:any) => {
 
 
   return (
-    <div className="flex w-full flex-col space-y-2">
+    <div className="flex w-full  flex-col space-y-2">
 
   
     <div className="w-full flex  justify-between ">

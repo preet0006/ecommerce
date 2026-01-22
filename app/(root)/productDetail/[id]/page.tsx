@@ -52,18 +52,18 @@ const relatedProducts = await db
   return (
     <div className=" relative flex flex-col min-w-screen min-h-screen">
       
-       <div className="flex flex-col h-screen w-full">
+      <div className="flex flex-col sm:h-screen w-full">
         <div className=" w-full h-full sm:w-[70%] flex items-center justify-center bg-gray-100">
           <ImageCarousel image={product.images}/>
         </div>
 
-        <div className=" sm:absolute right-1 bg-gray-100  sm:w-[30%] h-screen p-6 flex items-center">
+        <div className=" sm:absolute right-1 md:h-screen bg-gray-100  sm:w-[30%]  p-6 flex items-center">
           <Info product = {product} />
         </div>
       </div>
 
           
-           <div className='flex flex-col sm:flex-row w-full max-w-screen md:min-h-screen items-center justify-center space-x-4'>
+           <div className='flex  flex-col sm:flex-row w-full max-w-screen md:min-h-screen items-center justify-center space-x-4'>
 
             <div className='w-[300px] hidden sm:block rounded-xl bg-black h-96'>
 
