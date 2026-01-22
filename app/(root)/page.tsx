@@ -7,6 +7,7 @@ import { products } from '@/db/schema'
 import { db } from '@/db'
 import { eq } from 'drizzle-orm'
 import Link from 'next/link'
+import Hero from '@/components/Hero'
 
 
 
@@ -25,24 +26,10 @@ const page = async() => {
     <div className='flex px-2  z-10 space-y-3 md:space-y-6 flex-col w-full h-full '>
         
 
-    <div className='flex  overflow-hidden max-w-screen w-full h-[60vh] md:h-screen justify-center items-center '>
+    <div className='w-full h-full'>
        
-       <video 
-        className='blur-3xl filter scale-110'
-        autoPlay
-        loop
-        muted
-        playsInline src="./ecom.mp4"></video>
-
-         <div className='max-w-5xl rounded-2xl absolute'>
-          
-          <video 
-           className=' w-full h-full rounded-2xl object-contain'
-          autoPlay
-          loop
-         muted
-         playsInline src="./ecom.mp4"></video>
-        </div>
+       <Hero/>
+    
 
     </div>
 

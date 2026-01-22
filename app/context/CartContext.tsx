@@ -28,23 +28,29 @@ const CartContext = createContext<{
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
-    case 'ADD': {
-      const exists = state.items.find(item => item.id === action.payload.id)
+   case 'ADD': {
+     const exists = state.items.find(
+    item =>
+      item.id === action.payload.id &&
+      item.size === action.payload.size
+  )
 
-       if (exists) {
-       return {
-        items: state.items.map(item =>
-        item.id === action.payload.id && item.size === action.payload.size
+  if (exists) {
+    return {
+      items: state.items.map(item =>
+        item.id === action.payload.id &&
+        item.size === action.payload.size
           ? { ...item, quantity: item.quantity + 1 }
           : item
       ),
     }
   }
 
-      return {
-        items: [...state.items, { ...action.payload, quantity: 1 }],
-      }
-    }
+  return {
+    items: [...state.items, { ...action.payload, quantity: 1 }],
+  }
+}
+
 
     case 'UPDATE_QTY':
       return {

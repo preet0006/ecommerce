@@ -68,3 +68,44 @@ body {
   background-size: 1000px 100%;
   animation: shimmer 1.5s infinite linear;
 }
+
+
+
+@keyframes glow-sweep {
+  0% {
+    transform: translateX(-140%);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  80% {
+    opacity: 0.4;
+  }
+
+  100% {
+    transform: translateX(140%);
+    opacity: 0;
+  }
+}
+
+.animate-glow-sweep {
+  animation: glow-sweep 2.6s infinite cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(3px);
+}
+
+
+@keyframes videoSkeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

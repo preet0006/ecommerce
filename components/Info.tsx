@@ -69,7 +69,9 @@ const Info = ({product}:any) => {
   const {dispatch} = useCart()
 
   const handleAddToCart = () => {
-  dispatch({
+
+  if (isPending) return
+   dispatch({
     type: 'ADD',
     payload: {
       id: product.id,
@@ -179,8 +181,29 @@ const Info = ({product}:any) => {
            
            <div className="w-full flex justify-center mt-6">
 
-               <button onClick={handleAddToCart} 
-               className="bg-green-950 flex items-center justify-center text-sm sm:text-base text-white w-full rounded-xl py-3"> Add To Bag <span><ShoppingBag className="ml-3" size={18} color="#FFFFFF" /></span></button>
+             <button
+             onClick={handleAddToCart}
+            disabled={isPending}
+            className={`
+             bg-green-950 flex items-center justify-center
+             text-sm sm:text-base text-white w-full
+             rounded-xl py-3 transition-all
+             ${isPending ? 'opacity-70 cursor-not-allowed' : ''}
+           `}
+         >
+          {isPending ? (
+            <>
+              <span className="mr-2 animate-spin h-4 w-4 border-2 border-white         border-t-transparent rounded-full" />
+              Adding...
+              </>
+              ) : (
+               <>
+              Add To Bag
+              <ShoppingBag className="ml-3" size={18} color="#FFFFFF" />
+            </>
+             )}
+           </button>
+
 
            
            </div>
