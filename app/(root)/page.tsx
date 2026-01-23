@@ -97,16 +97,19 @@ const page = async() => {
 
       <div className='w-full   items-center justify-center flex sm:min-h-screen   bg-white'>
 
-             <div className="flex w-full mt-5 h-[40vh] sm:h-full max-w-5xl overflow-hidden rounded-2xl">
-                 <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                  src="./op.mp4"
-                />
-        </div>
+          <div className="relative flex w-full mt-5 h-[40vh] sm:h-full max-w-5xl overflow-hidden rounded-2xl bg-black">
+  
+            <video  autoPlay  
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster="/video-poster.jpg"
+              className="w-full h-full object-cover"
+              src="/op.mp4"
+            />
+          </div>
+
 
 
 

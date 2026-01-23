@@ -87,39 +87,41 @@ const Navbar = () => {
         <div className='py-1 w-full flex justify-between'>
           <div className=' space-x-6 hidden sm:flex px-2 bg-[#eff0f0d2] backdrop-blur-2xl'>
             {Object.keys(submenuData).map(category => (
-              <h6
+              <Link href={`/products/${category}`}
                 key={category}
                 className='cursor-pointer'
                 onMouseEnter={() => openMenu(category)}
               >
                 {category}
-              </h6>
+              </Link>
             ))}
           </div>
 
           <div className='flex space-x-2 text-center font-[650] '>
            <button className="sm:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
-           <Menu size={24} /></button>
+
+           <button className=''><Menu size={24} /></button></button>
 
         
             <h5 className=' sm:text-xl'>OSKLEN</h5>
           </div>
 
-          <div className='flex space-x-3 sm:space-x-3'>
-            <div className='relative flex'>
-              <input  value={search}
+          <div className='flex space-x-3 items-center sm:space-x-3'>
+            <div className='relative items-center flex'>
+              <input   value={search}
               onChange={(e) => setSearch(e.target.value)}
                 onKeyDown={(e) => {
                  if (e.key === "Enter") {
                     handleSearch()
                   }
-                }} className='bg-[#eff0f0d2] rounded-xs outline-none' />
+                }} className='bg-[#eff0f0d2] mt-1 rounded-xs w-[120px] sm:w-full outline-none ' />
               <div className='absolute space-x-3 flex bottom-1 right-1'>
                 
                 <Search size={22} />
-                 <span className='sm:hidden' onClick={()=>setShowBag(!showBag)}><Briefcase size={20} /></span>
+                
               </div>
             </div>
+             <span className='sm:hidden ' onClick={()=>setShowBag(!showBag)}><Briefcase size={22} /></span>
             <div>
               
             </div>

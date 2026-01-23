@@ -25,7 +25,7 @@ const Products = ({ data }:ProductsProps) => {
 
 if (isLoading) {
   return (
-  <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
+  <div className="flex flex-col items-center justify-center  px-4 text-center">
   <Image
     src="/okef.gif"
     alt="No categories available"

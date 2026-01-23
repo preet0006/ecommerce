@@ -1,6 +1,7 @@
 import React from 'react'
 import { types } from '@/lib'
 import ShowItem from './ShowItem'
+import Link from 'next/link'
 
 const HomeVariety = ({data}:any) => {
 
@@ -12,9 +13,9 @@ const HomeVariety = ({data}:any) => {
     <div className="flex gap-2 overflow-x-auto whitespace-nowrap sm:flex-wrap sm:overflow-visible">
         {
             types.map((e,idx)=>(
-                 <div key={idx} className='text-[12px] sm:text-[14px] text-black '>
+                 <Link href={`/products/${e}`} key={idx} className='text-[12px] sm:text-[14px] text-black '>
                 <button className='bg-white cursor-pointer px-4 py-1'>{e}</button>
-                </div>
+                </Link>
 
             ))
         }

@@ -129,9 +129,12 @@ const ShoppingBag = ({setShowBag}:any) => {
           <span className="font-semibold">R$ {totalPrice}</span>
         </div>
 
-       <Link href="/order"className="block w-full bg-[#3A3A3A] text-white py-3 rounded-xl font-medium text-center hover:bg-gray-700 transition">
-            Complete Purchase
-        </Link>
+      <Link href="/order"
+      onClick={() => setShowBag(false)}
+     className="block w-full bg-[#3A3A3A] text-white py-3 rounded-xl font-medium text-center    hover:bg-gray-700 transition">
+       Complete Purchase
+      </Link>
+
 
 
         <button onClick={()=>setShowBag(false)} className="w-full text-sm text-gray-500 mt-3">
