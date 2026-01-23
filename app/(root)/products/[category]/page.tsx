@@ -32,16 +32,15 @@ const product = await db
   return (
 
    
-    <div className='flex flex-col mt-6 flex-1 sm:p-2 space-y-6'>
+    <div className='flex flex-col mt-10 flex-1 sm:p-2 space-y-6'>
 
          <div className='hidden sm:flex'>
         <Filter/>
        </div>
-      <h4 className='text-xl  mt-12  pl-4 font-semibold'>Header</h4>
-      <p className='text-xs text-center sm:hidden px-6 text-gray-600 font-medium'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates, eum.</p>
-      <p className='text-gray-600 hidden sm:block'>
+    
+      {/* <p className='text-gray-600 hidden sm:block'>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates similique numquam ut dicta consequatur exercitationem id expedita asperiores pariatur officia natus doloremque voluptate perspiciatis dolores praesentium, minus quo recusandae cumque.
-      </p>
+      </p> */}
 
       <div className="w-full flex items-center justify-evenly gap-2 px-3 py-2 
                 bg-[#F5F5F5] rounded-xl

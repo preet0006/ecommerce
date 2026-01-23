@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import LoadingShimmer from '@/app/LoadingShimmer'
+import Image from 'next/image'
 
 
 
@@ -22,10 +23,28 @@ const Products = ({ data }:ProductsProps) => {
 
   const isLoading = !data || data.length === 0
 
-    if (isLoading) {
-    return <LoadingShimmer />
-  }
+if (isLoading) {
+  return (
+  <div className="flex flex-col items-center justify-center min-h-screen px-4 text-center">
+  <Image
+    src="/okef.gif"
+    alt="No categories available"
+    width={360}
+    height={360}
+    priority
+  />
 
+  <h2 className="mt-6 text-xl font-semibold text-gray-800">
+    Category Not Available
+  </h2>
+
+  <p className="mt-2 max-w-md text-sm text-gray-500">
+    We’re currently expanding our product catalog.  
+    Please try searching for <span className="font-medium">Men</span> or <span className="font-medium">Women</span> categories.
+  </p>
+</div>
+  );
+}
 
   return (
     <div className="flex flex-wrap mt-4 justify-center gap-1 sm:gap-0">

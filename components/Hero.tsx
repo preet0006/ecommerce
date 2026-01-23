@@ -25,7 +25,7 @@ const Hero = () => {
           className="md:hidden w-full h-full rounded-xl object-cover"
         />
        <div className="mt-4 text-center px-4">
-     <h2 className="text-2xl font-bold text-gray-900">
+     <h2 className="text-2xl sm:hidden font-bold text-gray-900">
     Discover Your Style
     </h2>
   <p className="mt-2 text-xs md:hidden text-gray-700">
