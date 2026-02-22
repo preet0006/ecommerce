@@ -1,5 +1,4 @@
-export const dynamic = 'force-dynamic'
-
+export const revalidate = 300;
 
 import Comments from '@/components/Comments'
 import HomeVariety from '@/components/HomeVariety'
@@ -49,7 +48,7 @@ const relatedProducts = await db
     
 
 
- console.log(product)
+ 
 
 
   return (

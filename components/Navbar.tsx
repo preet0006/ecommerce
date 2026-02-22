@@ -100,7 +100,12 @@ const Navbar = () => {
           <div className='flex space-x-2 text-center font-[650] '>
            <button className="sm:hidden" onClick={() => setShowMobileMenu(!showMobileMenu)}>
 
-           <button className=''><Menu size={24} /></button></button>
+           <span className=''>
+            
+            <Menu size={24} />
+           </span>
+           
+           </button>
 
         
             <h5 className=' sm:text-xl'>OSKLEN</h5>

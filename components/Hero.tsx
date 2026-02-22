@@ -11,6 +11,7 @@ const Hero = () => {
         autoPlay
         loop
         muted
+        preload="metadata"
         playsInline
         src="/ecom.mp4"
       />
@@ -49,6 +50,7 @@ const Hero = () => {
           autoPlay
           loop
           muted
+          preload="metadata"
           playsInline
           src="/ecom.mp4"
         />

@@ -103,7 +103,7 @@ const page = async() => {
               loop
               muted
               playsInline
-              preload="auto"
+              preload="metadata"
               poster="/video-poster.jpg"
               className="w-full h-full object-cover"
               src="/op.mp4"
