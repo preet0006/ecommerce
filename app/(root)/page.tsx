@@ -9,6 +9,7 @@ import { db } from "@/db";
 import { eq } from "drizzle-orm";
 import Link from "next/link";
 import Hero from "@/components/Hero";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "E-Com Store — Home",
@@ -55,10 +56,13 @@ const page = async () => {
           href={`/products/Men T-Shirt`}
           className="relative flex  w-full max-w-screen h-[40vh] md:h-[90vh] md:max-w-[48%] "
         >
-          <img
+          <Image
+            src="/men.avif"
+            alt={"men image"}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={75}
             className="w-full h-full rounded-2xl  object-cover"
-            src="./men.avif"
-            alt=""
           />
           <div className=" flex absolute w-full h-full  items-center justify-center ">
             <button className="bg-white/30 cursor-pointer backdrop-blur-md border border-white/20 text-2xl  px-4 py-1 rounded-3xl transition font-semibold">
@@ -71,10 +75,19 @@ const page = async () => {
           href={`/products/Women Tops`}
           className="relative flex  w-full max-w-screen h-[40vh] md:h-[90vh] md:max-w-[48%] "
         >
-          <img
+          {/* <img
             className="w-full h-full rounded-2xl  object-cover"
             src="/image.webp"
             alt=""
+          /> */}
+
+          <Image
+            src="/image.webp"
+            alt={"Girl image"}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={70} // Medium quality to keep file size low
+            className="w-full h-full rounded-2xl  object-cover"
           />
           <div className=" flex absolute w-full h-full items-center justify-center ">
             <button className="bg-white/30 cursor-pointer backdrop-blur-md border border-white/20 text-2xl  px-4 py-1 rounded-3xl transition font-semibold">

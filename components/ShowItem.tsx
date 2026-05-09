@@ -1,16 +1,17 @@
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 type Product = {
-  id: string
-  name: string
-  price: number
-  images: string[] | null
-}
+  id: string;
+  name: string;
+  price: number;
+  images: string[] | null;
+};
 
 type ShowItemProps = {
-  data?: Product[]
-}
+  data?: Product[];
+};
 
 const ShowItem = ({ data = [] }: ShowItemProps) => {
   return (
@@ -23,9 +24,10 @@ const ShowItem = ({ data = [] }: ShowItemProps) => {
         >
           <div className="rounded-xs sm:rounded-3xl h-[38vh] md:h-[70vh] bg-[#EBEBEA] overflow-hidden">
             <img
-              className="w-full h-full object-cover"
-              src={item.images?.[0] ?? '/placeholder.png'}
-              alt={item.name}
+              src={item.images?.[0] ?? "/placeholder.png"}
+              alt={item.name || "Product image"}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover"
             />
           </div>
 
@@ -33,14 +35,12 @@ const ShowItem = ({ data = [] }: ShowItemProps) => {
             <p className="text-sm md:text-base font-medium text-black">
               {item.name}
             </p>
-            <p className="text-xs md:text-sm text-gray-600">
-              ₹{item.price}
-            </p>
+            <p className="text-xs md:text-sm text-gray-600">₹{item.price}</p>
           </div>
         </Link>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ShowItem
+export default ShowItem;
