@@ -30,9 +30,12 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     };
   }
 
+  const title = `${product.name} - Premium ${product.category} from ${product.brand || 'E-Com'} | E-Com Store`;
+  const description = `Discover the ${product.name}, a premium ${product.category} from ${product.brand || 'our collection'}. Featuring ${product.fit || 'comfortable'} fit with fast shipping, easy returns, and excellent customer service. Shop now at E-Com Store for the best deals.`;
+
   return {
-    title: `${product.name} | E-Com Store`,
-    description: `Buy ${product.name} from our ${product.category} collection with fast shipping and easy returns.`,
+    title: title.length > 60 ? `${product.name} | E-Com Store` : title,
+    description: description.length > 160 ? `Buy ${product.name} from our ${product.category} collection with fast shipping and easy returns.` : description,
     alternates: {
       canonical: `/productDetail/${id}`,
     },
@@ -98,11 +101,22 @@ const relatedProducts = await db
       
       <div className="flex flex-col sm:h-screen w-full">
         <div className=" w-full h-full sm:w-[70%] flex items-center justify-center bg-gray-100">
-          <ImageCarousel image={product.images}/>
+          <ImageCarousel image={product.images?.[0] || '/placeholder.jpg'} alt={product.name}/>
         </div>
 
         <div className=" sm:absolute right-1 md:h-screen bg-gray-100  sm:w-[30%]  p-6 flex items-center">
           <Info product = {product} />
+        </div>
+
+        <div className="sm:absolute right-1 sm:top-[100vh] w-full sm:w-[30%] p-6 bg-gray-100">
+          <h2 className="text-lg font-semibold mb-4">Product Details</h2>
+          <p className="text-sm mb-2"><strong>Description:</strong> {product.description}</p>
+          <p className="text-sm mb-2"><strong>Brand:</strong> {product.brand}</p>
+          <p className="text-sm mb-2"><strong>Category:</strong> {product.category}</p>
+          <p className="text-sm mb-2"><strong>Fit:</strong> {product.fit}</p>
+          <p className="text-sm mb-2"><strong>Available Sizes:</strong> {product.sizes?.join(', ') || 'M, L, XL'}</p>
+          <p className="text-sm mb-2"><strong>Rating:</strong> {product.rating}/5 ({product.totalReviews} reviews)</p>
+          <p className="text-sm">This product is part of our premium collection, designed for comfort and style. We offer fast shipping across the country and a hassle-free return policy. If you have any questions, feel free to contact our customer service team.</p>
         </div>
       </div>
 

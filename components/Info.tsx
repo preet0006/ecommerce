@@ -125,7 +125,7 @@ const Info = ({product}:any) => {
     <div className="flex flex-col w-full p-3  bg-gradient-to-br from-[#f5f5f5] to-[#dcdcdc] shadow-sm rounded-2xl ">
       
       <div className="flex justify-between font-semibold">
-        <h5 className="">{product.name}</h5>
+        <h1 className="text-xl font-bold">{product.name}</h1>
         <span>{product.price}</span>
       </div>
       
