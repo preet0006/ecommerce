@@ -1,5 +1,6 @@
 export const revalidate = 300;
 
+import type { Metadata } from "next";
 import Comments from '@/components/Comments'
 import HomeVariety from '@/components/HomeVariety'
 import ImageCarousel from '@/components/ImageCarousel'
@@ -12,6 +13,47 @@ import { db } from '@/db'
 import { products } from '@/db/schema'
 import { and, eq, ne } from 'drizzle-orm'
 
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const { id } = params;
+  const [product] = await db
+    .select()
+    .from(products)
+    .where(eq(products.id, id));
+
+  if (!product) {
+    return {
+      title: "Product not found | E-Com Store",
+      description: "The requested product was not found.",
+      alternates: {
+        canonical: "/productDetail",
+      },
+    };
+  }
+
+  return {
+    title: `${product.name} | E-Com Store`,
+    description: `Buy ${product.name} from our ${product.category} collection with fast shipping and easy returns.`,
+    alternates: {
+      canonical: `/productDetail/${id}`,
+    },
+    openGraph: {
+      title: `${product.name} | E-Com Store`,
+      description: `Buy ${product.name} from our ${product.category} collection with fast shipping and easy returns.`,
+      images: [
+        {
+          url: product.images?.[0] || "/image.webp",
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | E-Com Store`,
+      description: `Buy ${product.name} from our ${product.category} collection with fast shipping and easy returns.`,
+      images: [product.images?.[0] || "/image.webp"],
+    },
+  };
+}
 
 const page = async({params}:{params:{id:string}}) => {
 

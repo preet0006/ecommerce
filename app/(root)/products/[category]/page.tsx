@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Filter from "@/components/Filter";
 import Products from "@/components/Products";
 import ShoppingBag from "@/components/Shop";
@@ -5,6 +6,27 @@ import { db } from "@/db";
 import { products } from "@/db/schema";
 import { types } from "@/lib";
 import { eq, sql } from "drizzle-orm";
+
+export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
+  const decodedCategory = decodeURIComponent(params.category);
+
+  return {
+    title: `${decodedCategory} | E-Com Store`,
+    description: `Browse ${decodedCategory} products with fast delivery, easy checkout, and curated style options.`,
+    alternates: {
+      canonical: `/products/${encodeURIComponent(decodedCategory)}`,
+    },
+    openGraph: {
+      title: `${decodedCategory} | E-Com Store`,
+      description: `Browse ${decodedCategory} products with fast delivery, easy checkout, and curated style options.`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${decodedCategory} | E-Com Store`,
+      description: `Browse ${decodedCategory} products with fast delivery, easy checkout, and curated style options.`,
+    },
+  };
+}
 
 const Page = async ({ params }: any) => {
   const { category } = await params;

@@ -1,8 +1,26 @@
+import type { Metadata } from "next";
 import { db } from '@/db'
 import { orders, products } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 import Link from 'next/link'
 import React from 'react'
+
+export const metadata: Metadata = {
+  title: "E-Com Store — Your Favourites",
+  description: "Review the items you’ve saved for later and shop your favourites quickly.",
+  alternates: {
+    canonical: "/bookmark",
+  },
+  openGraph: {
+    title: "E-Com Store — Your Favourites",
+    description: "Review the items you’ve saved for later and shop your favourites quickly.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "E-Com Store — Your Favourites",
+    description: "Review the items you’ve saved for later and shop your favourites quickly.",
+  },
+};
 
 const page = async () => {
   const cartItems = await db

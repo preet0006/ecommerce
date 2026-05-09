@@ -1,7 +1,25 @@
 'use client'
 
+import type { Metadata } from "next";
 import { useCart } from '@/app/context/CartContext'
 import React from 'react'
+
+export const metadata: Metadata = {
+  title: "E-Com Store — Shopping Cart",
+  description: "View your cart, edit quantities, and proceed to checkout with confidence.",
+  alternates: {
+    canonical: "/order",
+  },
+  openGraph: {
+    title: "E-Com Store — Shopping Cart",
+    description: "View your cart, edit quantities, and proceed to checkout with confidence.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "E-Com Store — Shopping Cart",
+    description: "View your cart, edit quantities, and proceed to checkout with confidence.",
+  },
+};
 
 const page = () => {
   const { state, dispatch } = useCart()
